@@ -3,7 +3,7 @@ import React from "react";
 import CustomButton from "./CustomButton";
 import { icons } from "@/constants";
 
-const Oauth = () => {
+const OAuth = () => {
   const handleGoogleSignIn = async () => {};
   return (
     <View>
@@ -30,4 +30,4 @@ const Oauth = () => {
   );
 };
 
-export default Oauth;
+export default OAuth;
