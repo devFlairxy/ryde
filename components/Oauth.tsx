@@ -6,18 +6,19 @@ import CustomButton from "@/components/CustomButton";
 import { icons } from "@/constants";
 import { googleOAuth } from "@/lib/auth";
 
-const OAuth = () => {
+const OAuth = ({ title }: { title: string }) => {
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
 
   const handleGoogleSignIn = async () => {
-    const result = await googleOAuth(startOAuthFlow);
+    try {
+      const result = await googleOAuth(startOAuthFlow);
 
-    if (result.code === "session_exists") {
-      Alert.alert("Success", "Session exists. Redirecting to home screen.");
-      router.replace("/(root)/(tabs)/home");
+      if (result.code === "session_exists" || result.code === "success") {
+        router.replace("/(root)/(tabs)/home");
+      }
+    } catch (error) {
+      console.log("OAuth error:", error);
     }
-
-    Alert.alert(result.success ? "Success" : "Error", result.message);
   };
 
   return (
@@ -29,7 +30,7 @@ const OAuth = () => {
       </View>
 
       <CustomButton
-        title="Log In with Google"
+        title={title}
         className="mt-5 w-full shadow-none"
         IconLeft={() => (
           <Image

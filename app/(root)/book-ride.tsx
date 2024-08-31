@@ -24,7 +24,7 @@ const BookRide = () => {
       merchantIdentifier="merchant.uber.com" // required for Apple Pay
       urlScheme="myapp" // required for 3D Secure and bank redirects
     >
-      <RideLayout title="Book Ride" snapPoints={["85%", "100%"]}>
+      <RideLayout title="Book Ride" snapPoints={["65%", "85%"]}>
         <Text className="text-xl font-JakartaSemiBold mb-3">
           Ride Information
         </Text>
@@ -64,7 +64,7 @@ const BookRide = () => {
           <View className="flex flex-row items-center justify-between w-full border-b border-white py-3">
             <Text className="text-lg font-JakartaRegular">Pickup Time</Text>
             <Text className="text-lg font-JakartaRegular">
-              {formatTime(driverDetails?.time! || 5)}
+              {formatTime(parseInt(`${driverDetails?.time}`))}
             </Text>
           </View>
 

@@ -66,7 +66,7 @@ const SignIn = () => {
             onPress={onSignInPress}
             className="mt-6"
           />
-          <OAuth />
+          <OAuth title="Log In with Google" />
 
           <Link
             href="/sign-up"
